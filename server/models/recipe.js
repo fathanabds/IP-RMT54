@@ -3,9 +3,7 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Recipe extends Model {
     static associate(models) {
-      Recipe.hasMany(models.RecipeIngredient);
-      Recipe.belongsTo(models.User);
-      Recipe.belongsToMany(models.Ingredient, { through: models.RecipeIngredient, as: 'RecipeComponents' });
+      Recipe.hasMany(models.UserRecipe);
     }
   }
   Recipe.init(
@@ -34,16 +32,51 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      favorite: DataTypes.BOOLEAN,
-      UserId: {
+      calories: {
         type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
           notNull: {
-            msg: 'User Id is required',
+            msg: 'Calories is required',
           },
           notEmpty: {
-            msg: 'User Id is required',
+            msg: 'Calories is required',
+          },
+        },
+      },
+      protein: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: 'Protein is required',
+          },
+          notEmpty: {
+            msg: 'Protein is required',
+          },
+        },
+      },
+      fat: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: 'Fat is required',
+          },
+          notEmpty: {
+            msg: 'Fat is required',
+          },
+        },
+      },
+      carbs: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: 'Carbs is required',
+          },
+          notEmpty: {
+            msg: 'Carbs is required',
           },
         },
       },
