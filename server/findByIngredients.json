@@ -9,7 +9,7 @@
     "missedIngredients": [
       {
         "id": 9078,
-        "amount": 2,
+        "amount": 2.0,
         "unit": "cups",
         "unitLong": "cups",
         "unitShort": "cup",
@@ -23,7 +23,7 @@
       },
       {
         "id": 1145,
-        "amount": 4,
+        "amount": 4.0,
         "unit": "Tbs",
         "unitLong": "Tbs",
         "unitShort": "Tbs",
@@ -52,7 +52,7 @@
     "usedIngredients": [
       {
         "id": 1089003,
-        "amount": 4,
+        "amount": 4.0,
         "unit": "cups",
         "unitLong": "cups",
         "unitShort": "cup",
@@ -91,7 +91,7 @@
       },
       {
         "id": 2010,
-        "amount": 2,
+        "amount": 2.0,
         "unit": "teaspoons",
         "unitLong": "teaspoons",
         "unitShort": "tsp",
@@ -104,7 +104,7 @@
       },
       {
         "id": 19719,
-        "amount": 2,
+        "amount": 2.0,
         "unit": "tablespoons",
         "unitLong": "tablespoons",
         "unitShort": "Tbsp",
@@ -119,7 +119,7 @@
     "usedIngredients": [
       {
         "id": 1079003,
-        "amount": 4,
+        "amount": 4.0,
         "unit": "large",
         "unitLong": "larges",
         "unitShort": "large",
@@ -158,7 +158,7 @@
       },
       {
         "id": 2011,
-        "amount": 1,
+        "amount": 1.0,
         "unit": "Dash",
         "unitLong": "Dash",
         "unitShort": "Dash",
@@ -171,7 +171,7 @@
       },
       {
         "id": 9156,
-        "amount": 1,
+        "amount": 1.0,
         "unit": "",
         "unitLong": "",
         "unitShort": "",
@@ -186,7 +186,7 @@
     "usedIngredients": [
       {
         "id": 9003,
-        "amount": 3,
+        "amount": 3.0,
         "unit": "",
         "unitLong": "",
         "unitShort": "",
@@ -211,7 +211,7 @@
     "missedIngredients": [
       {
         "id": 18369,
-        "amount": 1,
+        "amount": 1.0,
         "unit": "tsp",
         "unitLong": "teaspoon",
         "unitShort": "tsp",
@@ -224,7 +224,7 @@
       },
       {
         "id": 2010,
-        "amount": 1,
+        "amount": 1.0,
         "unit": "tsp",
         "unitLong": "teaspoon",
         "unitShort": "tsp",
@@ -237,7 +237,7 @@
       },
       {
         "id": 1123,
-        "amount": 1,
+        "amount": 1.0,
         "unit": "",
         "unitLong": "",
         "unitShort": "",
@@ -252,7 +252,7 @@
     "usedIngredients": [
       {
         "id": 9003,
-        "amount": 6,
+        "amount": 6.0,
         "unit": "large",
         "unitLong": "larges",
         "unitShort": "large",
@@ -290,7 +290,7 @@
       },
       {
         "id": 2010,
-        "amount": 1,
+        "amount": 1.0,
         "unit": "teaspoon",
         "unitLong": "teaspoon",
         "unitShort": "tsp",
@@ -303,7 +303,7 @@
       },
       {
         "id": 1123,
-        "amount": 1,
+        "amount": 1.0,
         "unit": "",
         "unitLong": "",
         "unitShort": "",
@@ -331,7 +331,7 @@
     "usedIngredients": [
       {
         "id": 9003,
-        "amount": 1,
+        "amount": 1.0,
         "unit": "cup",
         "unitLong": "cup",
         "unitShort": "cup",
@@ -369,7 +369,7 @@
       },
       {
         "id": 2010,
-        "amount": 1,
+        "amount": 1.0,
         "unit": "tsp",
         "unitLong": "teaspoon",
         "unitShort": "tsp",
@@ -382,7 +382,7 @@
       },
       {
         "id": 1123,
-        "amount": 1,
+        "amount": 1.0,
         "unit": "",
         "unitLong": "",
         "unitShort": "",
@@ -395,7 +395,7 @@
       },
       {
         "id": 1052050,
-        "amount": 1,
+        "amount": 1.0,
         "unit": "tsp",
         "unitLong": "teaspoon",
         "unitShort": "tsp",
@@ -449,7 +449,7 @@
       },
       {
         "id": 10414037,
-        "amount": 3,
+        "amount": 3.0,
         "unit": "tbsp",
         "unitLong": "tablespoons",
         "unitShort": "Tbsp",
@@ -475,7 +475,7 @@
       },
       {
         "id": 8120,
-        "amount": 1,
+        "amount": 1.0,
         "unit": "cup",
         "unitLong": "cup",
         "unitShort": "cup",
@@ -491,7 +491,7 @@
     "usedIngredients": [
       {
         "id": 9003,
-        "amount": 3,
+        "amount": 3.0,
         "unit": "",
         "unitLong": "",
         "unitShort": "",
@@ -516,7 +516,7 @@
     "missedIngredients": [
       {
         "id": 18369,
-        "amount": 1,
+        "amount": 1.0,
         "unit": "Tbsp",
         "unitLong": "Tbsp",
         "unitShort": "Tbsp",
@@ -542,7 +542,7 @@
       },
       {
         "id": 1077,
-        "amount": 1,
+        "amount": 1.0,
         "unit": "cup",
         "unitLong": "cup",
         "unitShort": "cup",
@@ -555,7 +555,7 @@
       },
       {
         "id": 93784,
-        "amount": 4,
+        "amount": 4.0,
         "unit": "servings",
         "unitLong": "servings",
         "unitShort": "servings",
@@ -570,7 +570,7 @@
     "usedIngredients": [
       {
         "id": 1089003,
-        "amount": 2,
+        "amount": 2.0,
         "unit": "",
         "unitLong": "",
         "unitShort": "",
@@ -595,7 +595,7 @@
     "missedIngredients": [
       {
         "id": 1001,
-        "amount": 1,
+        "amount": 1.0,
         "unit": "teaspoon",
         "unitLong": "teaspoon",
         "unitShort": "tsp",
@@ -621,7 +621,7 @@
       },
       {
         "id": 9152,
-        "amount": 8,
+        "amount": 8.0,
         "unit": "servings",
         "unitLong": "servings",
         "unitShort": "servings",
@@ -647,7 +647,7 @@
       },
       {
         "id": 18334,
-        "amount": 2,
+        "amount": 2.0,
         "unit": "",
         "unitLong": "",
         "unitShort": "",
@@ -662,7 +662,7 @@
     "usedIngredients": [
       {
         "id": 1089003,
-        "amount": 13,
+        "amount": 13.0,
         "unit": "large",
         "unitLong": "larges",
         "unitShort": "large",
@@ -755,7 +755,7 @@
     "usedIngredients": [
       {
         "id": 9003,
-        "amount": 1,
+        "amount": 1.0,
         "unit": "",
         "unitLong": "",
         "unitShort": "",
