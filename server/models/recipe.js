@@ -10,10 +10,43 @@ module.exports = (sequelize, DataTypes) => {
   }
   Recipe.init(
     {
-      title: DataTypes.STRING,
-      image: DataTypes.STRING,
+      title: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: 'Title is required',
+          },
+          notEmpty: {
+            msg: 'Title is required',
+          },
+        },
+      },
+      image: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: 'Image Url is required',
+          },
+          notEmpty: {
+            msg: 'Image Url is required',
+          },
+        },
+      },
       favorite: DataTypes.BOOLEAN,
-      UserId: DataTypes.INTEGER,
+      UserId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: 'User Id is required',
+          },
+          notEmpty: {
+            msg: 'User Id is required',
+          },
+        },
+      },
     },
     {
       sequelize,

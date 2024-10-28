@@ -9,10 +9,54 @@ module.exports = (sequelize, DataTypes) => {
   }
   RecipeIngredient.init(
     {
-      RecipeId: DataTypes.INTEGER,
-      IngredientId: DataTypes.INTEGER,
-      amount: DataTypes.INTEGER,
-      unit: DataTypes.STRING,
+      RecipeId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: 'Recipe Id is required',
+          },
+          notEmpty: {
+            msg: 'Recipe Id is required',
+          },
+        },
+      },
+      IngredientId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: 'Ingredient Id is required',
+          },
+          notEmpty: {
+            msg: 'Ingredient Id is required',
+          },
+        },
+      },
+      amount: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: 'Amount is required',
+          },
+          notEmpty: {
+            msg: 'Amount is required',
+          },
+        },
+      },
+      unit: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: 'Unit is required',
+          },
+          notEmpty: {
+            msg: 'Unit is required',
+          },
+        },
+      },
     },
     {
       sequelize,

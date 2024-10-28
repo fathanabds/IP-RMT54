@@ -9,8 +9,30 @@ module.exports = (sequelize, DataTypes) => {
   }
   Ingredient.init(
     {
-      name: DataTypes.STRING,
-      image: DataTypes.STRING,
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: 'Name is required',
+          },
+          notEmpty: {
+            msg: 'Name is required',
+          },
+        },
+      },
+      image: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: 'Image Url is required',
+          },
+          notEmpty: {
+            msg: 'Image Url is required',
+          },
+        },
+      },
     },
     {
       sequelize,
