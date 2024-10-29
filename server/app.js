@@ -5,6 +5,7 @@ const UserController = require('./controllers/UserController');
 const errorHandler = require('./middlewares/errorHandler');
 const authentication = require('./middlewares/authentication');
 const UserRecipeController = require('./controllers/UserRecipeController');
+const isOwner = require('./middlewares/isOwner');
 
 const app = express();
 
@@ -20,6 +21,8 @@ app.use(authentication);
 
 app.post('/user-recipes', UserRecipeController.create);
 app.get('/user-recipes', UserRecipeController.findAll);
+
+app.delete('/user-recipes/:id', isOwner);
 
 app.use(errorHandler);
 

@@ -84,6 +84,8 @@ OR
 }
 ```
 
+&nbsp;
+
 ## 2. POST /login
 
 Request
@@ -125,6 +127,8 @@ Response (401 - Unauthorized)
 }
 ```
 
+&nbsp;
+
 ## 3. POST /google-login
 
 Request:
@@ -143,4 +147,90 @@ Response (200 - OK)
 {
   "access_token": "string"
 }
+```
+
+&nbsp;
+
+## 4. POST /user-recipes
+
+Request:
+
+- headers:
+
+Description:
+
+- Save the recipe by RecipeId
+
+```json
+{
+  "authorization": "Bearer <token>"
+}
+```
+
+- body:
+
+```json
+{
+  "title": "Best Potato Cheese Soup in a bread bowl",
+  "image": "https://img.spoonacular.com/recipes/634927-312x231.jpg",
+  "calories": 750,
+  "protein": "26g",
+  "fat": "45g",
+  "carbs": "58g"
+}
+```
+
+_Response (201 - Created)_
+
+```json
+{
+  "id": 3,
+  "UserId": 2,
+  "RecipeId": 3
+}
+```
+
+&nbsp;
+
+## 5. GET /user-recipes
+
+Request:
+
+- headers:
+
+Description:
+
+- Show current user recipes
+
+```json
+{
+  "authorization": "Bearer <token>"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+[
+  {
+    "id": 1,
+    "UserId": 1,
+    "RecipeId": 1,
+    "favorite": false,
+    "createdAt": "2024-10-29T10:01:35.482Z",
+    "updatedAt": "2024-10-29T10:01:35.482Z",
+    "Recipe": {
+        "id": 1,
+        "title": "Best Potato Cheese Soup in a bread bowl",
+        "image": "https://img.spoonacular.com/recipes/634927-312x231.jpg",
+        "calories": 750,
+        "protein": "26g",
+        "fat": "45g",
+        "carbs": "58g",
+        "createdAt": "2024-10-29T10:01:35.446Z",
+        "updatedAt": "2024-10-29T10:01:35.446Z"
+    	}
+	},
+	...,
+]
 ```
