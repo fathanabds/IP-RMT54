@@ -20,7 +20,8 @@ app.post('/google-login', UserController.googleLogin);
 app.use(authentication);
 
 app.post('/user-recipes', UserRecipeController.create);
-app.get('/user-recipes', UserRecipeController.findAll);
+app.get('/user-recipes', UserRecipeController.findOwned);
+app.get('/user-recipes/favorite', UserRecipeController.findFavorited);
 app.patch('/user-recipes/:id/favorite/', isOwner, UserRecipeController.patchFavorite);
 app.patch('/user-recipes/:id/unfavorite/', isOwner, UserRecipeController.patchUnfavorite);
 app.delete('/user-recipes/:id', isOwner, UserRecipeController.destroy);

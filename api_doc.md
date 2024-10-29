@@ -385,6 +385,49 @@ _Response (403 - Forbidden)_
 }
 ```
 
+## 9. GET /user-recipes/favorite
+
+Request:
+
+- headers:
+
+Description:
+
+- Show current user favorited recipes
+
+```json
+{
+  "authorization": "Bearer <token>"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+[
+  {
+    "id": 1,
+    "UserId": 1,
+    "RecipeId": 1,
+    "favorite": true,
+    "createdAt": "2024-10-29T10:01:35.482Z",
+    "updatedAt": "2024-10-29T10:01:35.482Z",
+    "Recipe": {
+        "id": 1,
+        "title": "Best Potato Cheese Soup in a bread bowl",
+        "image": "https://img.spoonacular.com/recipes/634927-312x231.jpg",
+        "calories": 750,
+        "protein": "26g",
+        "fat": "45g",
+        "carbs": "58g",
+        "createdAt": "2024-10-29T10:01:35.446Z",
+        "updatedAt": "2024-10-29T10:01:35.446Z"
+    	}
+	},
+	...,
+]
+```
+
 &nbsp;
 
 ## Global Error

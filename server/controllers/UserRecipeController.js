@@ -24,11 +24,28 @@ class UserRecipeController {
     }
   }
 
-  static async findAll(req, res, next) {
+  static async findOwned(req, res, next) {
     const { id } = req.user;
     try {
       const recipes = await UserRecipe.findAll({
         where: {
+          UserId: id,
+        },
+        include: Recipe,
+      });
+      res.json(recipes);
+    } catch (error) {
+      console.log(error);
+      next(error);
+    }
+  }
+
+  static async findFavorited(req, res, next) {
+    const { id } = req.user;
+    try {
+      const recipes = await UserRecipe.findAll({
+        where: {
+          favorite: true,
           UserId: id,
         },
         include: Recipe,

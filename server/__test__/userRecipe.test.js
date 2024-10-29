@@ -244,6 +244,56 @@ describe('PATCH /user-recipes/:id/favorite', () => {
   });
 });
 
+describe('GET /user-recipes/favorite', () => {
+  test('200 success get all user favorite recipes', (done) => {
+    request(app)
+      .get('/user-recipes/favorite')
+      .set('Authorization', `Bearer ${userToken1}`)
+      .then((response) => {
+        const { body, status } = response;
+
+        expect(status).toBe(200);
+        expect(Array.isArray(body)).toBeTruthy();
+        expect(body.length).toBeGreaterThan(0);
+        done();
+      })
+      .catch((err) => {
+        done(err);
+      });
+  });
+
+  test('401 get all user favorite recipes without token', (done) => {
+    request(app)
+      .get('/user-recipes/favorite')
+      .then((response) => {
+        const { body, status } = response;
+        expect(status).toBe(401);
+
+        expect(body).toHaveProperty('message', 'Invalid token');
+        done();
+      })
+      .catch((err) => {
+        done(err);
+      });
+  });
+
+  test('401 get all user favorite recipes invalid token', (done) => {
+    request(app)
+      .get('/user-recipes/favorite')
+      .set('Authorization', `Bearer ${invalidToken}`)
+      .then((response) => {
+        const { body, status } = response;
+        expect(status).toBe(401);
+
+        expect(body).toHaveProperty('message', 'Invalid token');
+        done();
+      })
+      .catch((err) => {
+        done(err);
+      });
+  });
+});
+
 describe('PATCH /user-recipes/:id/unfavorite', () => {
   test('200 success unfavorite recipe', (done) => {
     request(app)

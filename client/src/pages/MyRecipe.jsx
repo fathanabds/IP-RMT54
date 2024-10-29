@@ -18,7 +18,6 @@ export default function MyRecipe() {
         },
       });
       setRecipes(data);
-      console.log(data);
     } catch (error) {
       console.log(error);
       Swal.fire(error.response.data.message);

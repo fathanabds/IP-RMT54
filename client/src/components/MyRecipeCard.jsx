@@ -1,8 +1,11 @@
 import Swal from 'sweetalert2';
 import axiosClient from '../helpers/axiosClient';
+import { useNavigate } from 'react-router-dom';
 
 /* eslint-disable react/prop-types */
 export default function MyRecipeCard({ recipe, fetchData }) {
+  const navigate = useNavigate();
+
   async function handleFavorite(id) {
     try {
       await axiosClient.patch(`/user-recipes/${id}/favorite`, null, {
@@ -10,7 +13,7 @@ export default function MyRecipeCard({ recipe, fetchData }) {
           Authorization: localStorage.getItem('access_token'),
         },
       });
-      fetchData();
+      navigate('/favorite-recipes');
     } catch (error) {
       console.log(error);
       Swal.fire(error.response.data.message);
@@ -24,7 +27,7 @@ export default function MyRecipeCard({ recipe, fetchData }) {
           Authorization: localStorage.getItem('access_token'),
         },
       });
-      fetchData();
+      navigate('/my-recipes');
     } catch (error) {
       console.log(error);
       Swal.fire(error.response.data.message);
