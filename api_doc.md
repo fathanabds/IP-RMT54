@@ -243,6 +243,8 @@ Description:
 
 - Delete user recipe by id
 
+Request:
+
 - headers:
 
 ```json
@@ -264,6 +266,106 @@ _Response (200 - OK)_
 ```json
 {
   "message": "Recipe has been deleted"
+}
+```
+
+_Response (404 - Not Found)_
+
+```json
+{
+  "message": "Data not found"
+}
+```
+
+_Response (403 - Forbidden)_
+
+```json
+{
+  "message": "You are not authorized"
+}
+```
+
+&nbsp;
+
+## 7. PATCH /user-recipes/favorite/:id
+
+Description:
+
+- Favorite one recipe by id
+
+Request:
+
+- headers:
+
+```json
+{
+  "authorization": "Bearer <token>"
+}
+```
+
+- params:
+
+```json
+{
+  "id": "integer (required)"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+{
+  "message": "Recipe has been added to favorite"
+}
+```
+
+_Response (404 - Not Found)_
+
+```json
+{
+  "message": "Data not found"
+}
+```
+
+_Response (403 - Forbidden)_
+
+```json
+{
+  "message": "You are not authorized"
+}
+```
+
+&nbsp;
+
+## 8. PATCH /user-recipes/unfavorite/:id
+
+Description:
+
+- Unfavorite one recipe by id
+
+Request:
+
+- headers:
+
+```json
+{
+  "authorization": "Bearer <token>"
+}
+```
+
+- params:
+
+```json
+{
+  "id": "integer (required)"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+{
+  "message": "Recipe has been removed from favorite"
 }
 ```
 

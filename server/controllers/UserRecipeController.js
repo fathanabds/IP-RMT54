@@ -49,6 +49,30 @@ class UserRecipeController {
       next(error);
     }
   }
+
+  static async patchFavorite(req, res, next) {
+    try {
+      req.userRecipe.update({
+        favorite: true,
+      });
+      res.json({ message: 'Recipe has been added to favorite' });
+    } catch (error) {
+      console.log(error);
+      next(error);
+    }
+  }
+
+  static async patchUnfavorite(req, res, next) {
+    try {
+      req.userRecipe.update({
+        favorite: false,
+      });
+      res.json({ message: 'Recipe has been removed from favorite' });
+    } catch (error) {
+      console.log(error);
+      next(error);
+    }
+  }
 }
 
 module.exports = UserRecipeController;
