@@ -53,7 +53,7 @@ export default function MyRecipe() {
                   <span className="card-text">Fat: {recipe.Recipe.fat}</span>
                   <span className="card-text">Carbs: {recipe.Recipe.carbs}</span>
                 </div>
-                <button className="btn btn-warning w-100 mb-1">Add Favorite</button>
+                {recipe.favorite ? <button className="btn btn-warning w-100 mb-1">Remove Favorite</button> : <button className="btn btn-warning w-100 mb-1">Add Favorite</button>}
                 <button onClick={() => handleDelete(recipe.id)} className="btn btn-danger w-100">
                   Delete Recipe
                 </button>

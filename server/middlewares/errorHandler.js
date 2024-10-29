@@ -12,7 +12,7 @@ function errorHandler(err, req, res, next) {
     case 'JsonWebTokenError':
       return res.status(401).json({ message: 'Invalid token' });
     case 'Forbidden':
-      return res.status(403).json({ message: 'You have no access' });
+      return res.status(403).json({ message: 'You are not authorized' });
     default:
       return res.status(500).json({ message: 'Internal Server Error' });
   }

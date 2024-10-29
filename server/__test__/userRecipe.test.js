@@ -9,7 +9,12 @@ const userData = {
   password: '123456',
 };
 
-let userToken1;
+const userData2 = {
+  email: 'rahma@mail.com',
+  password: '123456',
+};
+
+let userToken1, userToken2, recipeId;
 
 const invalidToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvbm9AbWFpbC5jb20iLCJpZCI6MSwiaWF0IjoxNjIxMTYzNDYyfQ.WhdvxtOveekRlXU0';
 
@@ -26,7 +31,10 @@ beforeAll((done) => {
   User.create(userData)
     .then((data) => {
       userToken1 = signToken({ id: data.id, email: data.email }, 'secret');
-      return;
+      return User.create(userData2);
+    })
+    .then((data2) => {
+      userToken2 = signToken({ id: data2.id, email: data2.email }, 'secret');
     })
     .then(() => {
       done();
@@ -60,6 +68,7 @@ describe('POST /user-recipes', () => {
       .then((response) => {
         const { body, status } = response;
 
+        recipeId = body.id;
         expect(status).toBe(201);
         expect(body).toHaveProperty('id', expect.any(Number));
         expect(body).toHaveProperty('UserId', expect.any(Number));
@@ -145,6 +154,73 @@ describe('GET /user-recipes', () => {
         expect(status).toBe(401);
 
         expect(body).toHaveProperty('message', 'Invalid token');
+        done();
+      })
+      .catch((err) => {
+        done(err);
+      });
+  });
+});
+
+describe('DELETE /user-recipes/:id', () => {
+  test('403 delete user recipe unauthorized user', (done) => {
+    request(app)
+      .delete(`/user-recipes/${recipeId}`)
+      .set('Authorization', `Bearer ${userToken2}`)
+      .then((response) => {
+        const { body, status } = response;
+        expect(status).toBe(403);
+        expect(body).toHaveProperty('message', 'You are not authorized');
+        done();
+      })
+      .catch((err) => {
+        done(err);
+      });
+  });
+
+  test('401 delete user recipe without token', (done) => {
+    request(app)
+      .delete(`/user-recipes/${recipeId}`)
+      .send(null)
+      .then((response) => {
+        const { body, status } = response;
+        expect(status).toBe(401);
+
+        expect(body).toHaveProperty('message', 'Invalid token');
+        done();
+      })
+      .catch((err) => {
+        done(err);
+      });
+  });
+
+  test('404 delete user recipe failed cause not found', (done) => {
+    request(app)
+      .delete('/user-recipes/99')
+      .send(null)
+      .set('Authorization', `Bearer ${userToken2}`)
+      .then((response) => {
+        const { body, status } = response;
+
+        expect(status).toBe(404);
+        expect(body).toHaveProperty('message', 'Data not found');
+        done();
+      })
+      .catch((err) => {
+        done(err);
+      });
+  });
+
+  test('200 success delete user recipe', (done) => {
+    request(app)
+      .delete(`/user-recipes/${recipeId}`)
+      .send(null)
+      .set('Authorization', `Bearer ${userToken1}`)
+      .then((response) => {
+        const { body, status } = response;
+
+        expect(status).toBe(200);
+        expect(body).toHaveProperty('message', 'Recipe has been deleted');
         done();
       })
       .catch((err) => {

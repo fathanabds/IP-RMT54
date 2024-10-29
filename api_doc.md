@@ -234,3 +234,71 @@ _Response (200 - OK)_
 	...,
 ]
 ```
+
+&nbsp;
+
+## 6. DELETE /user-recipes/:id
+
+Description:
+
+- Delete user recipe by id
+
+- headers:
+
+```json
+{
+  "authorization": "Bearer <token>"
+}
+```
+
+- params:
+
+```json
+{
+  "id": "integer (required)"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+{
+  "message": "Recipe has been deleted"
+}
+```
+
+_Response (404 - Not Found)_
+
+```json
+{
+  "message": "Data not found"
+}
+```
+
+_Response (403 - Forbidden)_
+
+```json
+{
+  "message": "You are not authorized"
+}
+```
+
+&nbsp;
+
+## Global Error
+
+_Response (401 - Unauthorized)_
+
+```json
+{
+  "message": "Invalid token"
+}
+```
+
+_Response (500 - Internal Server Error)_
+
+```json
+{
+  "message": "Internal server error"
+}
+```
