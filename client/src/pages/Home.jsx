@@ -12,12 +12,17 @@ export default function Home() {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    fetchRecipes();
-  }, []);
+    fetchRecipes(form);
+  }, [form]);
 
-  async function fetchRecipes() {
+  async function fetchRecipes(form) {
     try {
-      const { data } = await spoonClient.get('/recipes');
+      const { data } = await spoonClient.get(null, {
+        params: {
+          minCalories: form.minCalories || null,
+          maxCalories: form.maxCalories || null,
+        },
+      });
       setRecipes(data);
     } catch (error) {
       console.log(error);

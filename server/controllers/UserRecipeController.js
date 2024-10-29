@@ -24,7 +24,21 @@ class UserRecipeController {
     }
   }
 
-  static async findAll(req, res, next) {}
+  static async findAll(req, res, next) {
+    const { id } = req.user;
+    try {
+      const recipes = await UserRecipe.findAll({
+        where: {
+          UserId: id,
+        },
+        include: Recipe,
+      });
+      res.json(recipes);
+    } catch (error) {
+      console.log(error);
+      next(error);
+    }
+  }
 }
 
 module.exports = UserRecipeController;

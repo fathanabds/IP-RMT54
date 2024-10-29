@@ -19,6 +19,7 @@ app.post('/google-login', UserController.googleLogin);
 app.use(authentication);
 
 app.post('/user-recipes', UserRecipeController.create);
+app.get('/user-recipes', UserRecipeController.findAll);
 
 app.use(errorHandler);
 
