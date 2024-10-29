@@ -8,7 +8,7 @@ function errorHandler(err, req, res, next) {
     case 'BadRequest':
       return res.status(400).json({ message: err.message });
     case 'Unauthorized':
-      return res.status(401).json({ message: 'Invalid email or password' });
+      return res.status(401).json({ message: 'Invalid email/password' });
     case 'JsonWebTokenError':
       return res.status(401).json({ message: 'Invalid token' });
     case 'Forbidden':

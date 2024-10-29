@@ -1,9 +1,10 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon bin/www",
+    "test": "jest --runInBand --detectOpenHandles --forceExit"
   },
   "keywords": [],
   "author": "",
@@ -16,5 +17,9 @@
     "jsonwebtoken": "^9.0.2",
     "pg": "^8.13.1",
     "sequelize": "^6.37.5"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
   }
 }
