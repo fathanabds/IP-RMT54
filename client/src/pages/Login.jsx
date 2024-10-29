@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import axiosClient from '../helpers/axiosClient';
+import GoogleButton from '../components/GoogleButton';
 
 export default function Login() {
   const [form, setForm] = useState({
@@ -34,7 +35,7 @@ export default function Login() {
 
   return (
     <div className="my-5">
-      <h3 className="text-center">Login to your Account</h3>
+      <h3 className="text-center">Login to Your Account</h3>
       <form onSubmit={handleSubmit} className="w-50 mx-auto">
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
@@ -51,6 +52,9 @@ export default function Login() {
         <button type="submit" className="btn btn-primary w-100">
           Login
         </button>
+        <div className="d-flex justify-content-center">
+          <GoogleButton />
+        </div>
       </form>
       <p className="text-center my-3">
         Don&apos;t have an account?{' '}

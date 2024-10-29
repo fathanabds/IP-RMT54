@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import axiosClient from '../helpers/axiosClient';
+import GoogleButton from '../components/GoogleButton';
 
 export default function Register() {
   const [form, setForm] = useState({
@@ -33,16 +34,15 @@ export default function Register() {
 
   return (
     <div className="my-5">
-      <h3 className="text-center">Create your spoonazing account</h3>
+      <h3 className="text-center">
+        Create Your <span className="text-primary">spoonazing</span> Account
+      </h3>
       <form onSubmit={handleSubmit} className="w-50 mx-auto">
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
             Email
           </label>
           <input onChange={handleInput} name="email" type="text" className="form-control" id="email" />
-          <div id="emailHelp" className="form-text">
-            We&apos;ll never share your email with anyone else.
-          </div>
         </div>
         <div className="mb-3">
           <label htmlFor="password" className="form-label">
@@ -53,6 +53,9 @@ export default function Register() {
         <button type="submit" className="btn btn-primary w-100">
           Register
         </button>
+        <div className="d-flex justify-content-center">
+          <GoogleButton />
+        </div>
       </form>
       <p className="text-center my-3">
         You have an account?{' '}
