@@ -5,7 +5,7 @@ import axiosClient from '../helpers/axiosClient';
 export default function MyRecipeCard({ recipe, fetchData }) {
   async function handleFavorite(id) {
     try {
-      await axiosClient.patch(`/user-recipes/favorite/${id}`, null, {
+      await axiosClient.patch(`/user-recipes/${id}/favorite`, null, {
         headers: {
           Authorization: localStorage.getItem('access_token'),
         },
@@ -19,7 +19,7 @@ export default function MyRecipeCard({ recipe, fetchData }) {
 
   async function handleUnfavorite(id) {
     try {
-      await axiosClient.patch(`/user-recipes/unfavorite/${id}`, null, {
+      await axiosClient.patch(`/user-recipes/${id}/unfavorite`, null, {
         headers: {
           Authorization: localStorage.getItem('access_token'),
         },

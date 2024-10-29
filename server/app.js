@@ -21,8 +21,8 @@ app.use(authentication);
 
 app.post('/user-recipes', UserRecipeController.create);
 app.get('/user-recipes', UserRecipeController.findAll);
-app.patch('/user-recipes/favorite/:id', isOwner, UserRecipeController.patchFavorite);
-app.patch('/user-recipes/unfavorite/:id', isOwner, UserRecipeController.patchUnfavorite);
+app.patch('/user-recipes/:id/favorite/', isOwner, UserRecipeController.patchFavorite);
+app.patch('/user-recipes/:id/unfavorite/', isOwner, UserRecipeController.patchUnfavorite);
 app.delete('/user-recipes/:id', isOwner, UserRecipeController.destroy);
 
 app.use(errorHandler);

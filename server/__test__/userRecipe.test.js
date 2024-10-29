@@ -162,6 +162,170 @@ describe('GET /user-recipes', () => {
   });
 });
 
+describe('PATCH /user-recipes/:id/favorite', () => {
+  test('200 success favorite recipe', (done) => {
+    request(app)
+      .patch(`/user-recipes/${recipeId}/favorite`)
+      .set('Authorization', `Bearer ${userToken1}`)
+      .then((response) => {
+        const { body, status } = response;
+
+        expect(status).toBe(200);
+        expect(body).toHaveProperty('message', 'Recipe has been added to favorite');
+        done();
+      })
+      .catch((err) => {
+        done(err);
+      });
+  });
+
+  test('403 favorite recipe unauthorized user', (done) => {
+    request(app)
+      .patch(`/user-recipes/${recipeId}/favorite`)
+      .set('Authorization', `Bearer ${userToken2}`)
+      .then((response) => {
+        const { body, status } = response;
+
+        expect(status).toBe(403);
+        expect(body).toHaveProperty('message', 'You are not authorized');
+        done();
+      })
+      .catch((err) => {
+        done(err);
+      });
+  });
+
+  test('401 favorite recipe without token', (done) => {
+    request(app)
+      .patch(`/user-recipes/${recipeId}/favorite`)
+      .send(null)
+      .then((response) => {
+        const { body, status } = response;
+
+        expect(status).toBe(401);
+        expect(body).toHaveProperty('message', 'Invalid token');
+        done();
+      })
+      .catch((err) => {
+        done(err);
+      });
+  });
+
+  test('401 favorite recipe invalid token', (done) => {
+    request(app)
+      .patch(`/user-recipes/${recipeId}/favorite`)
+      .set('Authorization', `Bearer ${invalidToken}`)
+      .then((response) => {
+        const { body, status } = response;
+
+        expect(status).toBe(401);
+        expect(body).toHaveProperty('message', 'Invalid token');
+        done();
+      })
+      .catch((err) => {
+        done(err);
+      });
+  });
+
+  test('404 favorite recipe not found', (done) => {
+    request(app)
+      .patch(`/user-recipes/99/favorite`)
+      .set('Authorization', `Bearer ${userToken1}`)
+      .then((response) => {
+        const { body, status } = response;
+
+        expect(status).toBe(404);
+        expect(body).toHaveProperty('message', 'Data not found');
+        done();
+      })
+      .catch((err) => {
+        done(err);
+      });
+  });
+});
+
+describe('PATCH /user-recipes/:id/unfavorite', () => {
+  test('200 success unfavorite recipe', (done) => {
+    request(app)
+      .patch(`/user-recipes/${recipeId}/unfavorite`)
+      .set('Authorization', `Bearer ${userToken1}`)
+      .then((response) => {
+        const { body, status } = response;
+
+        expect(status).toBe(200);
+        expect(body).toHaveProperty('message', 'Recipe has been removed from favorite');
+        done();
+      })
+      .catch((err) => {
+        done(err);
+      });
+  });
+
+  test('403 unfavorite recipe unauthorized user', (done) => {
+    request(app)
+      .patch(`/user-recipes/${recipeId}/unfavorite`)
+      .set('Authorization', `Bearer ${userToken2}`)
+      .then((response) => {
+        const { body, status } = response;
+
+        expect(status).toBe(403);
+        expect(body).toHaveProperty('message', 'You are not authorized');
+        done();
+      })
+      .catch((err) => {
+        done(err);
+      });
+  });
+
+  test('401 unfavorite recipe without token', (done) => {
+    request(app)
+      .patch(`/user-recipes/${recipeId}/unfavorite`)
+      .send(null)
+      .then((response) => {
+        const { body, status } = response;
+
+        expect(status).toBe(401);
+        expect(body).toHaveProperty('message', 'Invalid token');
+        done();
+      })
+      .catch((err) => {
+        done(err);
+      });
+  });
+
+  test('401 unfavorite recipe invalid token', (done) => {
+    request(app)
+      .patch(`/user-recipes/${recipeId}/unfavorite`)
+      .set('Authorization', `Bearer ${invalidToken}`)
+      .then((response) => {
+        const { body, status } = response;
+
+        expect(status).toBe(401);
+        expect(body).toHaveProperty('message', 'Invalid token');
+        done();
+      })
+      .catch((err) => {
+        done(err);
+      });
+  });
+
+  test('404 unfavorite recipe not found', (done) => {
+    request(app)
+      .patch(`/user-recipes/99/favorite`)
+      .set('Authorization', `Bearer ${userToken1}`)
+      .then((response) => {
+        const { body, status } = response;
+
+        expect(status).toBe(404);
+        expect(body).toHaveProperty('message', 'Data not found');
+        done();
+      })
+      .catch((err) => {
+        done(err);
+      });
+  });
+});
+
 describe('DELETE /user-recipes/:id', () => {
   test('403 delete user recipe unauthorized user', (done) => {
     request(app)
