@@ -124,3 +124,23 @@ Response (401 - Unauthorized)
   "message": "Invalid email/password"
 }
 ```
+
+## 3. POST /google-login
+
+Request:
+
+- headers:
+
+```json
+{
+  "token": "string"
+}
+```
+
+Response (200 - OK)
+
+```json
+{
+  "access_token": "string"
+}
+```

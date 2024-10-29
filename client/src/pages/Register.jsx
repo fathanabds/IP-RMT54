@@ -35,7 +35,7 @@ export default function Register() {
   return (
     <div className="my-5">
       <h3 className="text-center">
-        Create Your <span className="text-primary">spoonazing</span> Account
+        Create Your <span className="text-primary">Spoonazing</span> Account
       </h3>
       <form onSubmit={handleSubmit} className="w-50 mx-auto">
         <div className="mb-3">

@@ -3,6 +3,8 @@ const express = require('express');
 const cors = require('cors');
 const UserController = require('./controllers/UserController');
 const errorHandler = require('./middlewares/errorHandler');
+const authentication = require('./middlewares/authentication');
+const UserRecipeController = require('./controllers/UserRecipeController');
 
 const app = express();
 
@@ -13,6 +15,10 @@ app.use(cors());
 app.post('/register', UserController.register);
 app.post('/login', UserController.login);
 app.post('/google-login', UserController.googleLogin);
+
+app.use(authentication);
+
+app.post('/user-recipes', UserRecipeController.create);
 
 app.use(errorHandler);
 

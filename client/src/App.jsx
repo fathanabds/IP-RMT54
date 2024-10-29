@@ -1,17 +1,20 @@
-import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, Outlet, redirect, RouterProvider } from 'react-router-dom';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
+import SpoonAi from './pages/SpoonAI';
+import MyRecipe from './pages/MyRecipe';
+import FavoriteRecipe from './pages/FavoriteRecipe';
 
 const router = createBrowserRouter([
   {
-    // loader: () => {
-    //   if (localStorage.getItem('access_token')) {
-    //     throw redirect('/');
-    //   }
-    //   return null;
-    // },
+    loader: () => {
+      if (localStorage.getItem('access_token')) {
+        throw redirect('/');
+      }
+      return null;
+    },
     children: [
       {
         path: '/register',
@@ -24,11 +27,28 @@ const router = createBrowserRouter([
     ],
   },
   {
-    element: <Navbar />,
+    element: (
+      <>
+        <Navbar />
+        <Outlet />
+      </>
+    ),
     children: [
       {
         path: '/',
         element: <Home />,
+      },
+      {
+        path: '/spoon-ai',
+        element: <SpoonAi />,
+      },
+      {
+        path: '/my-recipes',
+        element: <MyRecipe />,
+      },
+      {
+        path: '/favorite-recipes',
+        element: <FavoriteRecipe />,
       },
     ],
   },
