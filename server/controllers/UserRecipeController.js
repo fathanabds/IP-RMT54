@@ -39,6 +39,16 @@ class UserRecipeController {
       next(error);
     }
   }
+
+  static async destroy(req, res, next) {
+    try {
+      req.userRecipe.destroy();
+      res.json({ message: 'Recipe has been deleted' });
+    } catch (error) {
+      console.log(error);
+      next(error);
+    }
+  }
 }
 
 module.exports = UserRecipeController;

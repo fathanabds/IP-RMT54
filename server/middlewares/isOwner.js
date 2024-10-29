@@ -7,6 +7,7 @@ async function isOwner(req, res, next) {
       throw { name: 'NotFound' };
     }
     if (userRecipe.UserId == req.user.id) {
+      req.userRecipe = userRecipe;
       return next();
     } else {
       throw { name: 'Forbidden' };

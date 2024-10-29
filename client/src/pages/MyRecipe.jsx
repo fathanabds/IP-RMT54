@@ -11,6 +11,12 @@ export default function MyRecipe() {
 
   async function handleDelete(id) {
     try {
+      await axiosClient.delete(`/user-recipes/${id}`, {
+        headers: {
+          Authorization: localStorage.getItem('access_token'),
+        },
+      });
+      fetchData();
     } catch (error) {
       console.log(error);
       Swal.fire(error.response.data.message);

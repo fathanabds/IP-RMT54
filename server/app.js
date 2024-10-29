@@ -22,7 +22,7 @@ app.use(authentication);
 app.post('/user-recipes', UserRecipeController.create);
 app.get('/user-recipes', UserRecipeController.findAll);
 
-app.delete('/user-recipes/:id', isOwner);
+app.delete('/user-recipes/:id', isOwner, UserRecipeController.destroy);
 
 app.use(errorHandler);
 
