@@ -5,7 +5,6 @@ const { queryInterface } = sequelize;
 
 const userData = {
   email: 'ziady@mail.com',
-  name: 'ziady',
   password: '123456',
 };
 
@@ -32,7 +31,6 @@ describe('User Routes Test', () => {
           expect(status).toBe(201);
           expect(body).toHaveProperty('id', expect.any(Number));
           expect(body).toHaveProperty('email', userData.email);
-          expect(body).toHaveProperty('name', userData.name);
           done();
         })
         .catch((err) => {
@@ -79,7 +77,6 @@ describe('User Routes Test', () => {
         .post('/register')
         .send({
           email: 'user.com',
-          name: 'user',
           password: 'qweqwe',
         })
         .then((response) => {
