@@ -42,7 +42,9 @@ export default function Home() {
   return (
     <>
       <div className="my-3 w-50 mx-auto">
-        <h5 className="text-center">Let Us Know Your Calorie Needs</h5>
+        <h5 className="text-center">
+          Let Us Know Your <span className="text-primary">Calorie</span> Needs
+        </h5>
         <div className="input-group ">
           <input value={form.minCalories} onChange={handleSearch} name="minCalories" type="number" className="form-control" placeholder="Minimum calories: 50" />
           <span className="input-group-text">to</span>

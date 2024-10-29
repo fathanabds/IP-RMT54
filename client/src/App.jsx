@@ -33,6 +33,12 @@ const router = createBrowserRouter([
         <Outlet />
       </>
     ),
+    loader: () => {
+      if (!localStorage.getItem('access_token')) {
+        throw redirect('/login');
+      }
+      return null;
+    },
     children: [
       {
         path: '/',
