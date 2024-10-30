@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import model from '../helpers/geminiAi';
+import Swal from 'sweetalert2';
 
 export default function SpoonAi() {
   const [form, setForm] = useState({
+    gender: 'Male',
     age: '',
     dailyAct: 'Light',
     bodyHeight: '',
@@ -13,7 +15,11 @@ export default function SpoonAi() {
     deadline: '',
   });
 
-  const [aiResult, setAiResult] = useState('');
+  const [aiResult, setAiResult] = useState('Welcome to Spoon AI');
+
+  useEffect(() => {
+    Swal.fire(aiResult);
+  }, [aiResult]);
 
   function handleInput(e) {
     setForm((prevForm) => {
@@ -25,10 +31,11 @@ export default function SpoonAi() {
   }
 
   function handleReset() {
-    setAiResult('');
+    // setAiResult('Enter your data to get calories amount recommendation');
     setForm({
+      gender: 'Male',
       age: '',
-      dailyAct: 'Light',
+      dailyAct: 'Sedentary',
       bodyHeight: '',
       currWeight: '',
       targetWeight: '',
@@ -41,7 +48,7 @@ export default function SpoonAi() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const prompt = `Help me calculate my approximate minimum and maximum calorie needs per meal served. Age: ${form.age} years old. Height: ${form.bodyHeight} cm Activity intensity: ${form.dailyAct}. Current weight: ${form.currWeight} kg. Target weight: ${form.targetWeight} kg. Target: ${form.deadline} months. Meal frequency per day: ${form.dailyMeal} times. Number of servings per meal: ${form.dailyMeal}. Give short, clear and concise answers in the format: Minimum: xxx | Maximum : xxx (calories per serve)`;
+    const prompt = `Help me calculate my approximate minimum and maximum calorie needs per meal served. Gender: ${form.gender}. Age: ${form.age} years old. Height: ${form.bodyHeight} cm. Activity level: ${form.dailyAct}. Current weight: ${form.currWeight} kg. Target weight: ${form.targetWeight} kg. Target: ${form.deadline} months. Meal frequency per day: ${form.dailyMeal} times. Number of servings per meal: ${form.dailyMeal}. Give short, clear and concise answers in the format: Minimum: xxx | Maximum : xxx (calories per serve). if the data you need is not available, provide a short, clear and concise message`;
 
     const result = await model.generateContent(prompt);
     setAiResult(result.response.text());
@@ -49,9 +56,19 @@ export default function SpoonAi() {
 
   return (
     <>
-      <h4 className="text-center mt-3">Spoon AI</h4>
       <form onSubmit={handleSubmit} autoComplete="off">
         <div className="container mx-auto py-3 border rounded my-3 w-75">
+          <div className="row">
+            <div className="col">
+              <div className="mb-3 ">
+                <label className="form-label">Gender</label>
+                <select onChange={handleInput} value={form.gender} name="gender" className="form-select">
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+            </div>
+          </div>
           <div className="row">
             <div className="col">
               <div className="mb-3">
@@ -66,9 +83,11 @@ export default function SpoonAi() {
               <div className="mb-3">
                 <label className="form-label">Daily activity intensity</label>
                 <select onChange={handleInput} value={form.dailyAct} name="dailyAct" className="form-select" id="inputGroupSelect01">
-                  <option value="Light">Light</option>
-                  <option value="Moderate">Moderate</option>
-                  <option value="Heavy">Heavy</option>
+                  <option value="Sedentary">Sedentary</option>
+                  <option value="Lightly Active">Lightly Active</option>
+                  <option value="Moderately Active">Moderately Active</option>
+                  <option value="Very Active">Very Active</option>
+                  <option value="Extremely Active">Extremely Active</option>
                 </select>
               </div>
             </div>
@@ -139,10 +158,6 @@ export default function SpoonAi() {
           </div>
         </div>
       </form>
-
-      <div className="container mx-auto border rounded my-3 w-75">
-        <p className="text-center my-2">{aiResult}</p>
-      </div>
     </>
   );
 }
