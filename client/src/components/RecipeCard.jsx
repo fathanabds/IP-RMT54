@@ -3,11 +3,20 @@ import axiosClient from '../helpers/axiosClient';
 import { useNavigate } from 'react-router-dom';
 
 /* eslint-disable react/prop-types */
-export default function RecipeCard({ recipe }) {
+export default function RecipeCard({ recipe, myRecipes }) {
   const navigate = useNavigate();
 
   async function handleAddRecipe() {
+    console.log(recipe);
+    console.log(myRecipes);
+
     try {
+      const isDuplicate = myRecipes.find((e) => {
+        return e.Recipe.title == recipe.title;
+      });
+      if (isDuplicate) {
+        throw { name: 'DuplicateRecipe' };
+      }
       await axiosClient.post('/user-recipes', recipe, {
         headers: {
           Authorization: localStorage.getItem('access_token'),
@@ -16,6 +25,9 @@ export default function RecipeCard({ recipe }) {
       navigate('/my-recipes');
     } catch (error) {
       console.log(error);
+      if (error.name == 'DuplicateRecipe') {
+        return Swal.fire("This recipe's already on your list");
+      }
       Swal.fire(error.response.data.message);
     }
   }

@@ -2,14 +2,23 @@ import { useEffect, useState } from 'react';
 import RecipeCard from '../components/RecipeCard';
 import Swal from 'sweetalert2';
 import spoonClient from '../helpers/spoonClient';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchMyRecipes } from '../features/myRecipesSlice';
 
 export default function Home() {
+  const myRecipes = useSelector((state) => state.myRecipes.recipes.value);
+  const dispatch = useDispatch();
+
   const [form, setForm] = useState({
     minCalories: '',
     maxCalories: '',
   });
 
   const [recipes, setRecipes] = useState([]);
+
+  useEffect(() => {
+    dispatch(fetchMyRecipes());
+  }, []);
 
   useEffect(() => {
     fetchRecipes(form);
@@ -56,7 +65,7 @@ export default function Home() {
 
       <div className="d-flex gap-2 flex-wrap my-3 justify-content-center">
         {recipes.map((recipe) => {
-          return <RecipeCard key={recipe.id} recipe={recipe} />;
+          return <RecipeCard key={recipe.id} recipe={recipe} myRecipes={myRecipes} />;
         })}
       </div>
     </>

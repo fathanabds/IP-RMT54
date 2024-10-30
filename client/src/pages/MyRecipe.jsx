@@ -1,34 +1,21 @@
-import { useEffect, useState } from 'react';
-import Swal from 'sweetalert2';
-import axiosClient from '../helpers/axiosClient';
+import { useEffect } from 'react';
 import MyRecipeCard from '../components/MyRecipeCard';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchMyRecipes } from '../features/myRecipesSlice';
 
 export default function MyRecipe() {
-  const [recipes, setRecipes] = useState([]);
+  const recipes = useSelector((state) => state.myRecipes.recipes.value);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchData();
+    dispatch(fetchMyRecipes());
   }, []);
-
-  async function fetchData() {
-    try {
-      const { data } = await axiosClient.get('/user-recipes', {
-        headers: {
-          Authorization: localStorage.getItem('access_token'),
-        },
-      });
-      setRecipes(data);
-    } catch (error) {
-      console.log(error);
-      Swal.fire(error.response.data.message);
-    }
-  }
 
   return (
     <>
       <div className="d-flex gap-1 flex-wrap justify-content-center my-3">
         {recipes.map((recipe) => {
-          return <MyRecipeCard key={recipe.id} recipe={recipe} fetchData={fetchData} />;
+          return <MyRecipeCard key={recipe.id} recipe={recipe} currPage={'myRecipes'} />;
         })}
       </div>
     </>

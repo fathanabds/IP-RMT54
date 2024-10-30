@@ -1,10 +1,13 @@
 import Swal from 'sweetalert2';
 import axiosClient from '../helpers/axiosClient';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { fetchMyRecipes, fetchMyFavoriteRecipes } from '../features/myRecipesSlice';
 
 /* eslint-disable react/prop-types */
-export default function MyRecipeCard({ recipe, fetchData }) {
+export default function MyRecipeCard({ recipe, currPage }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   async function handleFavorite(id) {
     try {
@@ -28,6 +31,7 @@ export default function MyRecipeCard({ recipe, fetchData }) {
         },
       });
       navigate('/my-recipes');
+      dispatch(fetchMyRecipes());
     } catch (error) {
       console.log(error);
       Swal.fire(error.response.data.message);
@@ -41,7 +45,14 @@ export default function MyRecipeCard({ recipe, fetchData }) {
           Authorization: localStorage.getItem('access_token'),
         },
       });
-      fetchData();
+      switch (currPage) {
+        case 'myRecipes':
+          dispatch(fetchMyRecipes());
+          break;
+        default:
+          dispatch(fetchMyFavoriteRecipes());
+          break;
+      }
     } catch (error) {
       console.log(error);
       Swal.fire(error.response.data.message);
