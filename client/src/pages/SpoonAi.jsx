@@ -49,6 +49,7 @@ export default function SpoonAi() {
 
   return (
     <>
+      <h4 className="text-center mt-3">Spoon AI</h4>
       <form onSubmit={handleSubmit} autoComplete="off">
         <div className="container mx-auto py-3 border rounded my-3 w-75">
           <div className="row">

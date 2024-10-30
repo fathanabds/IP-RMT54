@@ -13,6 +13,7 @@ export default function MyRecipe() {
 
   return (
     <>
+      <h4 className="text-center mt-3">My Recipes</h4>
       <div className="d-flex gap-1 flex-wrap justify-content-center my-3">
         {recipes.map((recipe) => {
           return <MyRecipeCard key={recipe.id} recipe={recipe} currPage={'myRecipes'} />;

@@ -12,7 +12,7 @@ export default function Navbar() {
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container">
         <Link className="navbar-brand" to={'/'}>
-          <img src="/src/assets/ladle.png" alt="Ladle" width="30" height="24" />
+          <img src="/ladle.png" alt="Ladle" width="30" height="24" />
         </Link>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
