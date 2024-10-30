@@ -64,7 +64,7 @@ export default function MyRecipeCard({ recipe, currPage }) {
       <div className="card" style={{ width: '14rem' }}>
         <img height={'165px'} src={recipe.Recipe.image} className="card-img-top" alt={recipe.Recipe.title} />
         <div className="card-body">
-          <h5 className="card-title text-center" style={{ height: '75px' }}>
+          <h5 className="card-title text-center" style={{ height: '95px' }}>
             {recipe.Recipe.title}
           </h5>
           <div className="d-flex flex-wrap gap-1 justify-content-around mb-2">

@@ -15,7 +15,7 @@ export default function SpoonAi() {
     deadline: '',
   });
 
-  const [aiResult, setAiResult] = useState('Enter your data to get calories amount recommendation');
+  const [aiResult, setAiResult] = useState('Welcome to Spoon AI');
 
   useEffect(() => {
     Swal.fire(aiResult);
@@ -29,8 +29,6 @@ export default function SpoonAi() {
       };
     });
   }
-
-  console.log(form);
 
   function handleReset() {
     // setAiResult('Enter your data to get calories amount recommendation');
