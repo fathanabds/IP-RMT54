@@ -17,13 +17,15 @@ export default function Home() {
 
   async function fetchRecipes(form) {
     try {
-      const { data } = await spoonClient.get(null, {
-        params: {
-          minCalories: form.minCalories || null,
-          maxCalories: form.maxCalories || null,
-        },
-      });
-      setRecipes(data);
+      if (form.minCalories || form.maxCalories) {
+        const { data } = await spoonClient.get(null, {
+          params: {
+            minCalories: form.minCalories || null,
+            maxCalories: form.maxCalories || null,
+          },
+        });
+        setRecipes(data);
+      }
     } catch (error) {
       console.log(error);
       Swal.fire(error.response.data.message);
