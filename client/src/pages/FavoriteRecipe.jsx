@@ -1,6 +1,4 @@
 import { useEffect } from 'react';
-// import axiosClient from '../helpers/axiosClient';
-// import Swal from 'sweetalert2';
 import MyRecipeCard from '../components/MyRecipeCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchMyFavoriteRecipes } from '../features/myRecipesSlice';
