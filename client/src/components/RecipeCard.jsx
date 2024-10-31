@@ -7,9 +7,6 @@ export default function RecipeCard({ recipe, myRecipes }) {
   const navigate = useNavigate();
 
   async function handleAddRecipe() {
-    console.log(recipe);
-    console.log(myRecipes);
-
     try {
       const isDuplicate = myRecipes.find((e) => {
         return e.Recipe.title == recipe.title;
