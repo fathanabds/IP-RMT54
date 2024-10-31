@@ -18,7 +18,7 @@ export default function FavoriteRecipe() {
       {recipes.length == 0 && (
         <div className="text-center">
           <img src="/no-data.png" alt="No Data" height={'200px'} />
-          <p>Your favorite recipes will appear here</p>
+          <p className="mx-auto text-bg-secondary rounded border w-50">Your favorite recipes will appear here</p>
         </div>
       )}
 

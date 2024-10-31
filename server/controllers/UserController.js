@@ -67,23 +67,6 @@ class UserController {
       next(error);
     }
   }
-
-  static async gitHubLogin(accessToken, refreshToken, profile, done) {
-    try {
-      console.log('🚀 ~ UserController ~ gitHubLogin ~ profile:', profile);
-      // const [user, created] = await User.findOrCreate({
-      //   where: { email: profile.username },
-      //   defaults: {
-      //     email: profile.username,
-      //     password: 'password-github',
-      //   },
-      //   hooks: false,
-      // });
-      // console.log(user);
-    } catch (error) {
-      console.log(error);
-    }
-  }
 }
 
 module.exports = UserController;

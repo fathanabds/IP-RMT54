@@ -57,28 +57,27 @@ export default function Home() {
 
   return (
     <>
-      <div className="my-3 w-50 mx-auto">
+      <div className="mt-3 w-50 mx-auto">
         <h5 className="text-center">
           Let Us Know Your <span className="text-primary">Calorie</span> Needs
         </h5>
-        <div className="input-group ">
+        <div className="input-group mb-3">
           <input value={form.minCalories} onChange={handleSearch} name="minCalories" type="number" className="form-control" placeholder="Minimum calories: 50" />
           <span className="input-group-text">to</span>
           <input value={form.maxCalories} onChange={handleSearch} name="maxCalories" type="number" className="form-control" placeholder="Maximum calories: 800" />
         </div>
+        {recipes.length == 0 && (
+          <div className="text-center">
+            <img src="/welcome-back.png" alt="No Data" height={'200px'} />
+            <p className="mt-3 text-bg-secondary rounded border">Search recipes by your calorie needs</p>
+          </div>
+        )}
         <div className="d-flex align-items-center justify-content-center my-3">
           <GridLoader color={'#0B5ED7'} loading={loading} size={35} />
         </div>
       </div>
 
-      {recipes.length == 0 && (
-        <div className="text-center">
-          <img src="/welcome-back.png" alt="No Data" height={'200px'} />
-          <p className="mt-3">Search recipes by your calorie needs</p>
-        </div>
-      )}
-
-      <div className="d-flex gap-2 flex-wrap my-3 justify-content-center">
+      <div className="d-flex gap-2 flex-wrap justify-content-center">
         {recipes.map((recipe) => {
           return <RecipeCard key={recipe.id} recipe={recipe} myRecipes={myRecipes} />;
         })}
