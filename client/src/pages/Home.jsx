@@ -28,9 +28,9 @@ export default function Home() {
   }, [form]);
 
   async function fetchRecipes(form) {
-    try {
-      if (form.minCalories || form.maxCalories) {
-        setLoading(true);
+    if (form.minCalories || form.maxCalories) {
+      setLoading(true);
+      try {
         const { data } = await spoonClient.get(null, {
           params: {
             minCalories: form.minCalories || null,
@@ -38,11 +38,12 @@ export default function Home() {
           },
         });
         setRecipes(data);
+      } catch (error) {
+        console.log(error);
+        Swal.fire(error.response.data.message);
+      } finally {
         setLoading(false);
       }
-    } catch (error) {
-      console.log(error);
-      Swal.fire(error.response.data.message);
     }
   }
 
