@@ -35,6 +35,19 @@ List of available endpoints:
 
 - `POST /register`
 - `POST /login`
+- `POST /google-login`
+
+Routes below need authentication:
+
+- `POST /user-recipes`
+- `GET /user-recipes`
+- `GET /user-recipes/favorite`
+
+Routes below need authentication & authorization:
+
+- `PATCH /user-recipes/:id/favorite`
+- `PATCH /user-recipes/:id/unfavorite`
+- `DELETE /user-recipes/:id`
 
 ## 1. POST /register
 
@@ -287,7 +300,7 @@ _Response (403 - Forbidden)_
 
 &nbsp;
 
-## 7. PATCH /user-recipes/favorite/:id
+## 7. PATCH /user-recipes/:id/favorite
 
 Description:
 
@@ -337,7 +350,7 @@ _Response (403 - Forbidden)_
 
 &nbsp;
 
-## 8. PATCH /user-recipes/unfavorite/:id
+## 8. PATCH /user-recipes/:id/unfavorite
 
 Description:
 
