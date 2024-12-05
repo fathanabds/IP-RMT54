@@ -8,9 +8,9 @@ A web-based application to search for and store food based on calories with REST
 
 ## Deployment
 
-Client: [https://ip-p2-h8.web.app/](https://ip-p2-h8.web.app/)
+**Client:** [https://ip-p2-h8.web.app/](https://ip-p2-h8.web.app/)
 
-Server: [https://fase2.fathanabds.online](https://fase2.fathanabds.online)
+**Server:** [https://fase2.fathanabds.online](https://fase2.fathanabds.online)
 
 ## Environment Variables
 
@@ -56,3 +56,8 @@ To run tests, run the following command
 ## Documentation
 
 [API Documentation](https://github.com/fathanabds/IP-RMT54/blob/main/api_doc.md)
+
+## Tech Stack
+
+- **Client:** React, Bootstrap, Firebase Hosting
+- **Server:** ExpressJS, PostgreSQL, Spoonacular Recipe and Food API, AWS EC2
